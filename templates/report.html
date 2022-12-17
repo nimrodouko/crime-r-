@@ -1,0 +1,96 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<style>
+   
+</style>
+
+
+<body class="body">
+
+    {% block content %}
+
+
+
+
+       
+        
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="bg white text-white">
+                
+                <nav class="navbar  navbar-expand-sm bg-dark ">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a  class="nav-link active link-light" href="{% url 'home' %}"><i class="bi bi-house-door"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link link-info"  href="{% url 'report' %}">Reports</a>
+                        </li>    
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link link-light"  href="{% url 'cases' %}">Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light"   href="{% url 'wanted' %}">Wanted</a>
+                        </li>
+                       
+                           
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href="{% url 'logout' %}">Log out</a>
+                        </li>
+                          
+            
+                    </ul>
+                   
+                 </nav>
+            </div>
+
+        <h1>Report A Crime</h1>
+
+
+        <form  action="" method="post" autocomplete="off">
+            {% csrf_token %}
+            <p>ID Number :{{request.user.ID_Number}}</p>
+            <div class="form-group">
+               
+
+                
+
+            
+                {{form|crispy}}     
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+           
+          
+            
+            
+           
+            
+
+        </form>
+        
+      
+
+   
+        
+
+    </div>
+
+   {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>Edit Complaint</title>
+    
+</head>
+
+
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            
+                <nav class="navbar  navbar-expand-sm bg-dark ">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href="{% url 'home' %}"><i class="bi bi-house-door"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link  link-info"  href="{% url 'report' %}">Reports</a>
+                        </li>    
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link link-light"  href="{% url 'cases' %}">Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light"  href="wanted.html">Wanted</a>
+                        </li>
+                     
+            
+                    </ul>
+                   
+                 </nav>
+
+                
+            </div>
+          
+           
+          
+     
+            <div class="col offset -3" id="main">
+                <h1>Edit Report</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                  
+                </form>
+    
+            </div>
+          
+        </div>
+        
+
+    
+    </div>
+    <script src="{% static 'home/js/bootstrap.js' %}"></script>
+   {% endblock content %}
+</body>
+</html>

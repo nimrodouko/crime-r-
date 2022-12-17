@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cases</title>
+    <link rel="stylesheet" type ="text/css" href="{% static  'home/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<style>
+    
+</style>
+
+   
+<body class="body">
+{% block content %}
+
+    
+
+<div class="container">
+    
+        <div class="row">
+            <nav class="navbar  navbar-expand-sm bg-dark text-white ">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a  class="nav-link link-light" href="{% url 'home' %}"><i class="bi bi-house-door"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link link-light"  href="{% url 'report' %}">Reports</a>
+                    </li>    
+                    <li class="nav-item">
+                        <a  class="nav-link link-light" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link  active link-info"  href="{% url 'cases' %}">Cases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light"  href="{% url 'wanted' %}">Wanted</a>
+                    </li>
+        </div>
+    
+    <h1>Cases currently being dealt with!</h1>
+    {% if user.is_authenticated %}
+    {% for post in object_list %}
+    <div class="card">
+        
+        <div class="card-body">
+            <h2 class="card-title">Case Display</h2>
+            
+            <p class="card-text"><b>DESCRIPTION: {{post.description}}</b></p>
+            <p class="card-text">amus tenetur aliquid eos voluptas, recusandae reprehenderit repudiandae iste repellendus?</p>
+            <p><strong>Date Reported :</strong> {{post.date}} </p>
+            <button><a href="{% url 'edits' post.id %}" style="text-decoration: none;">Edit</a></button>|<button><a href="{% url 'delete' post.id %}" style="text-decoration: none;">Delete</a></button>
+
+            
+    
+
+        </div>
+        <hr>
+      
+        
+
+    </div>
+
+    {% endfor %}
+    {% else %}
+        <div class="card">
+            <div class="cardtitle">
+                <p><b>You should login!</b></p>
+                <div class="cardbody">
+                    <a  class="nav-link link-info" href ="{% url 'login' %}">Login</a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    {% endif %}
+
+    
+
+   
+</div>
+<script src="{% static 'home/js/bootstrap.js' %}"></script>
+{% endblock content %}
+
+</body>
+</html>

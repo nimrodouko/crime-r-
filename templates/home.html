@@ -1,0 +1,107 @@
+
+{% load static %}
+
+{% block content %}
+
+ 
+ <link rel="stylesheet" href="{% static 'home/css/bootstrap.css' %}">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+ <style>
+    .container-fluid{
+        background-color: lightcoral;
+    }
+  
+  
+
+ </style>
+
+<body>
+    
+    <div class="container-fluid">
+       
+        <div class="row">
+            <div class="col">
+                <h1 style="position:relative; top:200px;left:0px;font-size:70px" >CRIME REPORTING SITE</h1>
+                <img src="{% static 'home/images/helmet.png' %}" height="300 rem" width="normal" style="position:relative; left:1000px;">
+            </div>
+            <div class= " bg white text-white">
+                
+                <nav class="navbar  navbar-expand-sm bg-dark ">
+                    <ul class="navbar-nav" style="font-size:15px ;">
+                        <li class="nav-item">
+                            <a  class="nav-link active link-info" href="{% url 'home' %}"><i class="bi bi-house-door"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link link-light"  href="{% url 'report' %}">Reports</a>
+                        </li>    
+                       
+                        <li class="nav-item">
+                            <a  class="nav-link link-light"  href="{% url 'cases' %}">Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light"  href="{% url 'wanted' %}">Wanted</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href ="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href="{% url 'signup' %}">Signup</a>
+                        </li>
+
+                           
+                        <li class="nav-item">
+                            <a  class="nav-link link-light" href="{% url 'logout' %}">Log out</a>
+                        </li>
+                       
+                          
+            
+                    </ul>
+                   
+                 </nav>
+        </div>
+        
+      
+
+                
+               
+               
+
+            {% if user.is_authenticated %}
+                <p>Welcome <b class="text-dark">{{request.user}}</b></p>
+                <p>Id_number :{{request.user.ID_Number}}</p>
+            {% else %}
+                <p class="text-dark"><b>You should log in first</b></p>
+            {% endif %}
+
+                <p>Keep the community safe at all times by being the watchful eye of the goverment</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad quod officia, tenetur totam a magni dolore qui assumenda quaerat consectetur nisi, atque maxime architecto quo! Itaque ipsa adipisci laboriosam provident.</p>
+                
+                
+                    <div class="card bg-dark">
+                        <div class="cardbody">
+                        <p class="text-light">Report  the police much more Easily at  the comfort of your home</p>
+                        <p class="text-light">Attach evidence if any to show proof</p>
+                        <p class="text-light">View the Most wanted to assist the law in the Case of spotting the Criminal</p>
+
+                        <p class="text-light"><b>Service to all</b></p>
+
+                        </div>
+
+                    </div>
+                
+        </div>
+
+
+    </div>
+      
+
+   
+    
+    
+</body>
+<script src="{% static 'home/js/bootstrap.js' %}"></script>
+{% endblock content %}
+</html>
