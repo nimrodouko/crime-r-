@@ -3,99 +3,110 @@
 
 {% block content %}
 
- 
- <link rel="stylesheet" href="{% static 'home/css/bootstrap.css' %}">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
- <style>
-    .container-fluid{
-        background-color: lightcoral;
-    }
-  
-  
+<link rel="stylesheet" href="{% static 'home/css/bootstrap.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<style>
+    
 
- </style>
+    .vertical-menu {
+height:auto;
+width: 280px;
+position: fixed;
+z-index: 1;
+top: 0;
+left:0;
+overflow-x: hidden;
+background-color: lightsteelblue;
+padding-top: 20px;
+}
+
+.vertical-menu a {
+  background-color: lightsteelblue; /* Grey background color */
+  color: black; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+  background-color: black;
+}
+
+.vertical-menu a.active {
+  background-color:lightcoral; 
+  color: black;
+}
+.main{
+    margin-left:160px;
+    font-size: 15px;
+    padding:0px 10px;
+    background-color: darkgray;
+}
+
+</style>
 
 <body>
-    
-    <div class="container-fluid">
-       
-        <div class="row">
-            <div class="col">
-                <h1 style="position:relative; top:200px;left:0px;font-size:70px" >CRIME REPORTING SITE</h1>
-                <img src="{% static 'home/images/helmet.png' %}" height="300 rem" width="normal" style="position:relative; left:1000px;">
-            </div>
-            <div class= " bg white text-white">
-                
-                <nav class="navbar  navbar-expand-sm bg-dark ">
-                    <ul class="navbar-nav" style="font-size:15px ;">
-                        <li class="nav-item">
-                            <a  class="nav-link active link-info" href="{% url 'home' %}"><i class="bi bi-house-door"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link link-light"  href="{% url 'report' %}">Reports</a>
-                        </li>    
-                       
-                        <li class="nav-item">
-                            <a  class="nav-link link-light"  href="{% url 'cases' %}">Cases</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-light"  href="{% url 'wanted' %}">Wanted</a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link link-light" href="{% url 'about' %}">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link link-light" href ="{% url 'login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link link-light" href="{% url 'signup' %}">Signup</a>
-                        </li>
-
-                           
-                        <li class="nav-item">
-                            <a  class="nav-link link-light" href="{% url 'logout' %}">Log out</a>
-                        </li>
-                       
-                          
-            
-                    </ul>
-                   
-                 </nav>
+    <div class="container">
+        <div class="vertical-menu">
+            <a class="nav-link active link-info" href="{% url 'home' %}">Home</i></a>
+            <a class="nav-link link-light" href="{% url 'report' %}">Reports</a>
+            <a class="nav-link link-light" href="{% url 'cases' %}">Cases</a>
+            <a class="nav-link link-light" href="{% url 'wanted' %}">Wanted</a>
+            <a class="nav-link link-light" href="{% url 'about' %}">About</a>
+            <a class="nav-link link-light" href="{% url 'login' %}">Login</a>
+            <a  class="nav-link link-light" href="{% url 'signup' %}">Signup</a>
+            <a  class="nav-link link-light" href="{% url 'logout' %}">Log out</a>
         </div>
         
+        <div class="main">
+            <h1>REPORT DEM CRIMES</h1>
+            {% if user.is_authenticated %}
+            <p>Welcome <b class="text-dark">{{request.user}}</b></p>
+            <p>Id_number :{{request.user.ID_Number}}</p>
+        {% else %}
+            <p class="text-dark"><b>You should log in first</b></p>
+        {% endif %}
+
+            <p>Keep the community safe at all times by being the watchful eye of the goverment</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad quod officia, tenetur totam a magni dolore qui assumenda quaerat consectetur nisi, atque maxime architecto quo! Itaque ipsa adipisci laboriosam provident.</p>
+            
+            
+                
+                    
+                    <p class="text-blue">Report  the police much more Easily at  the comfort of your home</p>
+                    <p class="text-blue">Attach evidence if any to show proof</p>
+                    <p class="text-blue">View the Most wanted to assist the law in the Case of spotting the Criminal</p>
+
+                    <p class="text-blue"><b>Service to all</b></p>
+                   <p>Crime is a multifaceted and complex phenomenon that has been present throughout human history. It refers to any illegal or prohibited activity that is punishable by law. Crime can take various forms, including violent crimes such as assault and murder, property crimes like theft and vandalism, financial crimes like fraud and embezzlement, drug-related crimes like possession and trafficking, and many others.
+
+                    Crime has significant social, economic, and political implications. It affects individuals, families, and communities, and can result in physical harm, emotional trauma, and financial losses. Crime can also undermine the stability and security of society and challenge the effectiveness of law enforcement and the criminal justice system. In many cases, crime is driven by poverty, inequality, social exclusion, and lack of access to education and employment opportunities.
+                    
+                    The causes of crime are diverse and complex. They can include individual factors such as psychological disorders, substance abuse, and a history of violence or victimization. Social and environmental factors can also contribute to crime, such as poverty, unemployment, inadequate housing, and lack of social support. In addition, structural factors such as discrimination and inequality can exacerbate the risk of crime, particularly for marginalized and disadvantaged groups.</p>
+                
+
+        </div>        
+
+    </div>
+
+
+    
+      
       
 
                 
                
-               
-
-            {% if user.is_authenticated %}
-                <p>Welcome <b class="text-dark">{{request.user}}</b></p>
-                <p>Id_number :{{request.user.ID_Number}}</p>
-            {% else %}
-                <p class="text-dark"><b>You should log in first</b></p>
-            {% endif %}
-
-                <p>Keep the community safe at all times by being the watchful eye of the goverment</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad quod officia, tenetur totam a magni dolore qui assumenda quaerat consectetur nisi, atque maxime architecto quo! Itaque ipsa adipisci laboriosam provident.</p>
+            
                 
+         
+
+              
+
                 
-                    <div class="card bg-dark">
-                        <div class="cardbody">
-                        <p class="text-light">Report  the police much more Easily at  the comfort of your home</p>
-                        <p class="text-light">Attach evidence if any to show proof</p>
-                        <p class="text-light">View the Most wanted to assist the law in the Case of spotting the Criminal</p>
-
-                        <p class="text-light"><b>Service to all</b></p>
-
-                        </div>
-
-                    </div>
-                
-        </div>
+        
 
 
-    </div>
+    
       
 
    
