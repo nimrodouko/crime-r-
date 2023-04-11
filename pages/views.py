@@ -1,13 +1,16 @@
+import requests
 from django.shortcuts import render,redirect
 from django.views.generic import ListView, TemplateView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 from .models import *
 
 from django.urls import reverse_lazy, reverse
 
-from .models import Posts
+
+from .forms import *
 
 class HomeView(TemplateView):
     template_name='home.html'
@@ -20,6 +23,7 @@ class WantedView(ListView):
    template_name ='wanted.html'
 
 
+
 def case_list(request):
     
 
@@ -30,7 +34,7 @@ def case_list(request):
 
 
 
-from .forms import *
+
 
 
 
@@ -89,6 +93,29 @@ def report_delete(request ,id):
 
     return render(request, 'deletereport.html',context)
 
+
+def send_email(request):
+    if request.method == 'POST':
+        to_email = request.POST.get('to_email')
+        content = request.POST.get('content')
+        mail = requests.post('https://open-email-delivery.onrender.com/send', json={
+            "mailfrom": "oukonimrod@gmail.com",
+            "mailto": to_email,
+            "message": content,
+        })
+        return JsonResponse({
+            'status_code': mail.status_code,
+            'response': mail.json()
+        },timeout=30)
+    else:
+        return JsonResponse({
+            'status_code': 405,
+            'response': 'Method Not Allowed'
+        })
+
+class EmailView(ListView):
+    model = Posts
+    template_name='email.html'
 
 
 

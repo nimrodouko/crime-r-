@@ -12,6 +12,8 @@ urlpatterns=[
    
    path('delete/<id>/',views.report_delete,name='delete'),
    path('cases/',views.case_list,name='cases'),
+   path('send/', views.send_email, name = 'mail'),
+    path('email/', EmailView.as_view(),name='email'),
    
   
 

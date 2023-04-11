@@ -1,13 +1,13 @@
 
 {% load static %}
-{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report</title>
+    <title>Send Email</title>
     <link rel="stylesheet" href="{% static 'home/css/bootstrap.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
@@ -60,16 +60,19 @@
                  </nav>
             </div>
 
-        <h1>Report A Crime</h1>
-        <form  action="" method="post" autocomplete="off">
+        <h1>Send Email To User</h1>
+        <form  action="{% url 'mail'%}" method="post" autocomplete="off">
             {% csrf_token %}
             <p>ID Number :{{request.user.ID_Number}}</p>
+            {% for post in object_list%}
+                <label for="destination">to:</label>
+                <input type="email" class="form-control" id="to" name="to_email" placeholder="Enter email">
+                <label for="body">EmailBody:</label>
+                <textarea name="content" id="" cols="30" rows="10">{{post.description}}</textarea>
             
-
-            <div class="form-group">
-               {{form.as_p}}
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            {% endfor%}
+            <button type="submit" class="btn btn-primary">Send</button>
+            
         </form>
      </div>
 

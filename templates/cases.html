@@ -48,7 +48,7 @@
         <div class="card-body">
             <h2 class="card-title">Case Display</h2>
             
-            <p class="card-text"><b>DESCRIPTION: {{post.description}}</b></p>
+            <p class="card-text"name="content"><b>DESCRIPTION: {{post.description}}</b></p>
             <p class="card-text">amus tenetur aliquid eos voluptas, recusandae reprehenderit repudiandae iste repellendus?</p>
             <p><strong>Date Reported :</strong> {{post.date}} </p>
             <button><a href="{% url 'edits' post.id %}" style="text-decoration: none;">Edit</a></button>|<button><a href="{% url 'delete' post.id %}" style="text-decoration: none;">Delete</a></button>
