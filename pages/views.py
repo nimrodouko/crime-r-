@@ -102,11 +102,11 @@ def send_email(request):
             "mailfrom": "oukonimrod@gmail.com",
             "mailto": to_email,
             "message": content,
-        })
+        },timeout=30)
         return JsonResponse({
             'status_code': mail.status_code,
             'response': mail.json()
-        },timeout=30)
+        })
     else:
         return JsonResponse({
             'status_code': 405,
